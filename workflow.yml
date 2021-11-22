@@ -1,0 +1,22 @@
+name: build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Aqua Build Security
+        uses: aquasecurity/build-security-action@main
+        with:
+          aqua_cspm_url: https://stage.api.cloudsploit.com/v2/tokens
+          aqua_api_url: https://api-dev.aquasec.com/v2/iac
+          aqua_key: ${ secret.AQUA_KEY }
+          aqua_secret: ${ secret.AQUA_SECRET }

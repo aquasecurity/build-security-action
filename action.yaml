@@ -1,0 +1,25 @@
+name: "Aqua Build Security"
+description: "Trivy scanner with upload to to Aquasec Build Security"
+author: "Aqua Security"
+inputs:
+  aqua_key:
+    description: "Your AQUA_KEY provided by CSPM"
+    required: true
+  aqua_secret:
+    description: "Your AQUA_SECRET provided by CSPM"
+    required: true
+  build:
+    description: "The logical name for the build system. Defaults to GitHubAction"
+    required: false
+    default: GitHubAction
+  aqua_api_url:
+    description: "The Aqua API endpoint to report results to"
+    required: false
+    default:  https://api.aquasec.com/v2/iac
+  aqua_cspm_url:
+    description: "The Atlas endpoint to report results to"
+    required: false
+    default: https://stage.api.cloudsploit.com/v2/tokens
+runs:
+  using: "docker"
+  image: "Dockerfile"
