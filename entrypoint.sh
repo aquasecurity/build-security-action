@@ -4,8 +4,13 @@ set -e
 
 # configure Trivy to use the aqua plugin
 
-export CSPM_URL=${INPUT_AQUA_CSPM_URL:-https://api.cloudsploit.com/v2/tokens}
-export AQUA_URL=${INPUT_AQUA_API_URL:-https://api.aquasec.com/v2/iac}
+if [ -n "${INPUT_AQUA_CSPM_URL}" ]; then
+  export CSPM_URL=${INPUT_AQUA_CSPM_URL}
+}
+
+if [ -n "${INPUT_AQUA_API_URL}" ]; then
+  export AQUA_URL=${INPUT_AQUA_API_URL}
+}
 
 # if GITHUB_WORKSPACE is defined, move to it
 if [ -n "${GITHUB_WORKSPACE}" ]; then
