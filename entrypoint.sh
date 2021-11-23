@@ -6,11 +6,11 @@ set -e
 
 if [ -n "${INPUT_AQUA_CSPM_URL}" ]; then
   export CSPM_URL=${INPUT_AQUA_CSPM_URL}
-}
+fi
 
 if [ -n "${INPUT_AQUA_API_URL}" ]; then
   export AQUA_URL=${INPUT_AQUA_API_URL}
-}
+fi
 
 # if GITHUB_WORKSPACE is defined, move to it
 if [ -n "${GITHUB_WORKSPACE}" ]; then
